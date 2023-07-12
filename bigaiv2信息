@@ -1,0 +1,9 @@
+bigaiv2
+
+v2集群服务调度节点标签规范：
+cpu服务：必打两个标签 zone=fjy，nodetype=cpu
+gpu服务：必打三个标签 zone=fjy，nodetype=gpu，gpu=true
+如需服务代理要个性化配置会话保持、并发数等需求：必打两个标签 zone=fjy，nodetype=inward
+如需服务请求k8s集群外的需求：必打两个标签 zone=fjy，nodetype=outward
+
+陶总，worker-decoder和longrunning-worker-decoder 服务部署控制器（deployment、statefulset等）使用nodeSelector，请设置zone=fjy.nodetype=gpu.gpu=true 标签来调度gpu资源
